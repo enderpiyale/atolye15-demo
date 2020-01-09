@@ -46,7 +46,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - run: docker build -t enderpiyale/atolye15:stage .
+      - run: docker build -t enderpiyale/atolye15:latest .
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker push enderpiyale/atolye15
 
