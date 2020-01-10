@@ -44,6 +44,7 @@ jobs:
     docker:
       - image: circleci/node:12.14.1
     working_directory: ~/repo
+    machine: true
     steps:
       - checkout
       - run: docker build -t enderpiyale/atolye15:latest .
