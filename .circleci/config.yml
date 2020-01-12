@@ -74,20 +74,16 @@ jobs:
       - run: docker push enderpiyale/atoly15:production
 
 workflows:
-  test-build:
+  test-build-deploy:
     jobs:
       - test
       - build:
           requires:
-            - test
-  deploy:
-    jobs:          
+            - test     
       - deploy:
           filters:
             branches:
-              only: develop
-  prod:
-    jobs:            
+              only: develop         
       - prod:
           requires:
             - deploy
