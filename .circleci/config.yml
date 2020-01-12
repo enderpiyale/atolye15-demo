@@ -81,14 +81,14 @@ workflows:
           requires:
             - test     
       - deploy:
-          requires:
-            - build 
           filters:
             branches:
-              only: develop         
+              only: develop   
+            tags:
+              only: latest      
       - prod:
-          requires:
-            - deploy
           filters:
             branches:
               only: prod
+            tags:
+              only: stage 

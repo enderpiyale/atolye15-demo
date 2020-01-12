@@ -1,5 +1,5 @@
 # Use an official Node runtime as a parent image
-FROM node:13.6.0-stretch
+FROM node:13.6.0-alpine
 
 # Set the working directory to /app
 WORKDIR '/app'
