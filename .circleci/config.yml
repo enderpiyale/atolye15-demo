@@ -63,7 +63,7 @@ jobs:
           echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
           docker push enderpiyale/atolye15:stage
 
-  prod:
+  production:
     docker:
       - image: enderpiyale/atolye15:stage
         auth:
