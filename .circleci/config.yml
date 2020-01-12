@@ -58,7 +58,6 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker tag enderpiyale/atolye15:latest enderpiyale/atolye15:stage
 
   production:
@@ -70,7 +69,6 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker tag enderpiyale/atolye15:stage enderpiyale/atolye15:production
 
 workflows:
