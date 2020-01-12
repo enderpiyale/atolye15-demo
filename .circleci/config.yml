@@ -49,6 +49,24 @@ jobs:
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker push enderpiyale/atolye15
 
+  deploy:
+    machine: true
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+        name: Docker Image as stage
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker push enderpiyale/atolye15:stage
+
+  prod:
+    steps:
+      - checkout
+      - run:
+        name: Docker Image as production
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker push enderpiyale/atolye15:production
+
 workflows:
   test-build-and-deploy:
     jobs:
