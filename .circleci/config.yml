@@ -41,7 +41,7 @@ jobs:
       - run: yarn test:e2e
 
   build:
-    machine: true
+    machine: docker
     working_directory: ~/repo
     steps:
       - checkout
@@ -50,7 +50,7 @@ jobs:
       - run: docker push enderpiyale/atolye15
 
   deploy:
-    machine: true
+    machine: docker
     environment: 
       IMAGE_NAME: enderpiyale/atolye15
     working_directory: ~/repo
@@ -81,3 +81,13 @@ workflows:
       - build:
           requires:
             - test
+      - deploy:
+          filters:
+            branches:
+              only: develop
+      - prod:
+          requires:
+            - deploy
+          filters:
+            branches:
+              only: prod
