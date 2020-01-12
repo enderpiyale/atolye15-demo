@@ -2,6 +2,11 @@
 #
 # Check https://circleci.com/docs/2.1/language-javascript/ for more details
 #
+version: 2.1
+orbs:
+  aws-eks: circleci/aws-eks@0.2.6
+  kubernetes: circleci/kubernetes@0.11.0
+
 jobs:
   test:
     docker:
@@ -54,7 +59,7 @@ jobs:
       parameters:
         cluster-name:
           description: |
-            Name of the EKS cluster
+            Atolye15 EKS Cluster
           type: string
       steps:
         - kubernetes/install
@@ -65,11 +70,6 @@ jobs:
               kubectl get services
             name: Atolye15 cluster
 
-version: 2.1
-orbs:
-  aws-eks: circleci/aws-eks@0.2.6
-  kubernetes: circleci/kubernetes@0.11.0
-
 workflows:
   test-build-and-deploy:
     jobs:
@@ -79,13 +79,13 @@ workflows:
             - test
       - deploy:
         - aws-eks/create-cluster:
-          cluster-name: Atolye15-demo
+          cluster-name: atolye15demo
         - atolye15-cluster:
-          cluster-name: Atolye15-demo
+          cluster-name: atolye15demo
           requires:
             - aws-eks/create-cluster
         - aws-eks/delete-cluster:
-          cluster-name: Atolye15-demo
+          cluster-name: atolye15demo
           requires:
             - atolye15-cluster:       
 
