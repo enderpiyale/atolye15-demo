@@ -59,6 +59,7 @@ jobs:
       - checkout
       - setup_remote_docker
       - run: docker tag enderpiyale/atolye15:latest enderpiyale/atolye15:stage
+      - run: docker push enderpiyale/atolye15:stage
 
   production:
     docker:

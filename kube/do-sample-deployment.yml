@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: atolye15
+  name: atolye15-demo
   namespace: default
   labels:
-    app: atolye15
+    app: atolye15-demo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: atolye15
+      app: atolye15-demo
   template:
     metadata:
       labels:
-        app: atolye15
+        app: atolye15-demo
     spec:
       containers:
         - name: atolye15
-          image: enderpiyale/atolye15:stage
+          image: enderpiyale/atolye15:latest
           ports:
-            - containerPort: 80
+            - containerPort: 3000
               name: http
