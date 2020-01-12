@@ -54,7 +54,7 @@ jobs:
         name: Push Docker Image as stage
         command: |
           echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-          docker push $IMAGE_NAME:stage
+          docker push $enderpiyale/atolye15:stage
 
   prod:
     steps:
@@ -63,7 +63,7 @@ jobs:
         name: Push Docker Image as production
         command: |
           echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-          docker push $IMAGE_NAME:production
+          docker push $enderpiyale/atolye15:production
 
 workflows:
   test-build-and-deploy:
