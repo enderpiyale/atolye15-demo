@@ -63,7 +63,7 @@ jobs:
 
   prod:
     docker:
-      - image: enderpiyale/atolye15:stage
+      - image: enderpiyale/atolye15:latest
         auth:
           username: $DOCKER_USER
           password: $DOCKER_PASS
