@@ -54,7 +54,7 @@ jobs:
       - run: docker push enderpiyale/atolye15
 
   deploy:
-    atolye15-cluster::
+    atolye15-cluster:
       executor: aws-eks/python3
       parameters:
         cluster-name:
