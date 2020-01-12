@@ -56,6 +56,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
+      - setup_remote_docker
       - run:
         name: Docker Image as stage
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
@@ -64,8 +65,10 @@ jobs:
   prod:
     environment: 
       IMAGE_NAME: enderpiyale/atolye15
+    working_directory: ~/repo
     steps:
       - checkout
+      - setup_remote_docker
       - run:
         name: Docker Image as production
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
