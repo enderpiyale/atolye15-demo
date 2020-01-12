@@ -52,7 +52,9 @@ jobs:
   deploy:
     docker:
       - image: enderpiyale/atolye15:latest
-    working_directory: ~/repo
+        auth:
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
     steps:
       - checkout
       - setup_remote_docker
@@ -62,7 +64,9 @@ jobs:
   prod:
     docker:
       - image: enderpiyale/atolye15:stage
-    working_directory: ~/repo
+        auth:
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
     steps:
       - checkout
       - setup_remote_docker
@@ -70,16 +74,18 @@ jobs:
       - run: docker push enderpiyale/atoly15:production
 
 workflows:
-  test-build-and-deploy:
+  test-build-deploy:
     jobs:
       - test
       - build:
           requires:
-            - test
+            - test     
       - deploy:
+          requires:
+            - build 
           filters:
             branches:
-              only: develop
+              only: develop         
       - prod:
           requires:
             - deploy
