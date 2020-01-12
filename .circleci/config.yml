@@ -49,6 +49,21 @@ jobs:
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker push enderpiyale/atolye15
 
+  deploy:
+    - run:
+        name: Push Docker Image as stage
+        command: |
+          echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+          docker push $IMAGE_NAME:stage
+
+  prod:
+    steps:
+      - checkout
+    - run:
+        name: Push Docker Image as production
+        command: |
+          echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+          docker push $IMAGE_NAME:production
 
 workflows:
   test-build-and-deploy:
@@ -57,3 +72,13 @@ workflows:
       - build:
           requires:
             - test
+      - deploy:
+          filters:
+            branches:
+              only: develop
+      - prod:
+          requires:
+            - deploy
+          filters:
+            branches:
+              only: prod
