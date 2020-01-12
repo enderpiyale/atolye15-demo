@@ -52,6 +52,7 @@ jobs:
   deploy:
     docker:
       - image: enderpiyale/atolye15:latest
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
     working_directory: ~/repo
     steps:
       - checkout
@@ -62,6 +63,7 @@ jobs:
   prod:
     docker:
       - image: enderpiyale/atolye15:stage
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
     working_directory: ~/repo
     steps:
       - checkout
