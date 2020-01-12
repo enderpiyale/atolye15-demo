@@ -79,20 +79,19 @@ workflows:
       - test
       - build:
           requires:
-            - test     
+            - test  
+          filters:
+            branches:
+              only: feature/test  
       - deploy:
-          requires:
-            - build
           filters:
             branches:
               only: develop   
             tags:
               only: latest      
       - prod:
-          requires:
-            - deploy
           filters:
             branches:
-              only: prod
+              only: master
             tags:
               only: stage 
