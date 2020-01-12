@@ -93,6 +93,6 @@ workflows:
             - deploy
           filters:
             branches:
-              only: prod
+              only: master
             tags:
               only: stage 
