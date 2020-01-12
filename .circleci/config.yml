@@ -53,8 +53,8 @@ jobs:
     docker:
       - image: enderpiyale/atolye15:latest
         auth:
-          username: enderpiyale
-          password: End123456
+          username: $DOCKER_USER
+          password: $DOCKER_PASS
     steps:
       - checkout
       - setup_remote_docker
