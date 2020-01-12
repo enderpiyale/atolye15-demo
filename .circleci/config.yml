@@ -53,13 +53,13 @@ jobs:
     docker:
       - image: enderpiyale/atolye15:latest
         auth:
-          username: $DOCKER_USER
-          password: $DOCKER_PASS
+          username: enderpiyale
+          password: End123456
     steps:
       - checkout
       - setup_remote_docker
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
-      - run: docker push enderpiyale/atoly15:stage
+      - run: docker push enderpiyale/atolye15:stage
 
   prod:
     docker:
@@ -71,7 +71,7 @@ jobs:
       - checkout
       - setup_remote_docker
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
-      - run: docker push enderpiyale/atoly15:production
+      - run: docker push enderpiyale/atolye15:production
 
 workflows:
   test-build-deploy:
@@ -82,13 +82,17 @@ workflows:
             - test     
       - deploy:
           requires:
-            - build 
+            - build
           filters:
             branches:
-              only: develop         
+              only: develop   
+            tags:
+              only: latest      
       - prod:
           requires:
             - deploy
           filters:
             branches:
               only: prod
+            tags:
+              only: stage 
