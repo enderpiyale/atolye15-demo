@@ -58,10 +58,8 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run:
-        command: |
-          echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-          docker push enderpiyale/atolye15:stage
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker tag enderpiyale/atolye15:latest enderpiyale/atolye15:stage
 
   production:
     docker:
@@ -72,10 +70,8 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run:
-        command: |
-          echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-          docker push enderpiyale/atolye15:stage
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker tag enderpiyale/atolye15:stage enderpiyale/atolye15:production
 
 workflows:
   test-build-deploy:
