@@ -3,10 +3,6 @@
 # Check https://circleci.com/docs/2.1/language-javascript/ for more details
 #
 version: 2.1
-orbs:
-  aws-eks: circleci/aws-eks@0.2.6
-  kubernetes: circleci/kubernetes@0.11.0
-
 jobs:
   test:
     docker:
@@ -61,4 +57,3 @@ workflows:
       - build:
           requires:
             - test
-
