@@ -51,7 +51,7 @@ jobs:
 
   deploy:
     docker:
-      - image: hub.docker.com/repository/docker/enderpiyale/atolye15:latest
+      - image: enderpiyale/atolye15:latest
         auth:
           username: enderpiyale
           password: End123456
