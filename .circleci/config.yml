@@ -41,7 +41,7 @@ jobs:
       - run: yarn test:e2e
 
   build:
-    machine: docker
+    machine: true
     working_directory: ~/repo
     steps:
       - checkout
@@ -50,9 +50,8 @@ jobs:
       - run: docker push enderpiyale/atolye15
 
   deploy:
-    machine: docker
-    environment: 
-      IMAGE_NAME: enderpiyale/atolye15
+    docker:
+      - image: enderpiyale/atolye15:latest
     working_directory: ~/repo
     steps:
       - checkout
@@ -60,11 +59,11 @@ jobs:
       - run:
         name: Docker Image as stage
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
-      - run: docker push $IMAGE_NAME:stage
+      - run: docker push enderpiyale/atoly15:stage
 
   prod:
-    environment: 
-      IMAGE_NAME: enderpiyale/atolye15
+    docker:
+      - image: enderpiyale/atolye15:stage
     working_directory: ~/repo
     steps:
       - checkout
@@ -72,7 +71,7 @@ jobs:
       - run:
         name: Docker Image as production
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
-      - run: docker push $IMAGE_NAME:production
+      - run: docker push enderpiyale/atoly15:production
 
 workflows:
   test-build-and-deploy:
