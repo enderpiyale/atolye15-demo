@@ -54,7 +54,7 @@ jobs:
       - run: docker push enderpiyale/atolye15
 
   deploy:
-    atolye15-cluster:
+    test-cluster:
       executor: aws-eks/python3
       parameters:
         cluster-name:
@@ -80,12 +80,12 @@ workflows:
       - deploy:
         - aws-eks/create-cluster:
           cluster-name: atolye15demo
-        - atolye15-cluster:
+        - test-cluster:
           cluster-name: atolye15demo
           requires:
             - aws-eks/create-cluster
         - aws-eks/delete-cluster:
           cluster-name: atolye15demo
           requires:
-            - atolye15-cluster:       
+            - test-cluster:       
 
