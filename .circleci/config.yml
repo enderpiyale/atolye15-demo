@@ -56,8 +56,6 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run:
-        name: Docker Image as stage
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker push enderpiyale/atoly15:stage
 
@@ -68,8 +66,6 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run:
-        name: Docker Image as production
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker push enderpiyale/atoly15:production
 
