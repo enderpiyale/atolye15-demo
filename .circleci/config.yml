@@ -49,7 +49,7 @@ jobs:
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker push enderpiyale/atolye15
 
-  deploy:
+  development:
     docker:
       - image: enderpiyale/atolye15:latest
         auth:
@@ -90,13 +90,13 @@ workflows:
           filters:
             branches:
               only: feature/test  
-      - deploy:
+      - development:
           filters:
             branches:
-              only: develop   
+              only: develop  
             tags:
               only: latest      
-      - prod:
+      - production:
           filters:
             branches:
               only: master
