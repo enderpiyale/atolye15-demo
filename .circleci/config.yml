@@ -59,7 +59,7 @@ jobs:
   prod:
     steps:
       - checkout
-    - run:
+      - run:
         name: Push Docker Image as production
         command: |
           echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
