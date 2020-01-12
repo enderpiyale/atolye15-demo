@@ -84,16 +84,12 @@ workflows:
             branches:
               only: feature/test  
       - deploy:
-          requires:
-            - build
           filters:
             branches:
               only: develop   
             tags:
               only: latest      
       - prod:
-          requires:
-            - deploy
           filters:
             branches:
               only: master
