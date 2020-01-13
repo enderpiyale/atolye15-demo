@@ -40,7 +40,7 @@ jobs:
       - run: yarn test:cov
       - run: yarn test:e2e
 
-  build:
+  build-stage:
     machine: true
     working_directory: ~/repo
     steps:
@@ -49,13 +49,28 @@ jobs:
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - run: docker push enderpiyale/atolye15
 
+  build-prod:
+    machine: true
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: docker build -t enderpiyale/atolye15:production .
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run: docker push enderpiyale/atolye15      
+
 workflows:
   test-build-deploy:
     jobs:
       - test
-      - build:
+      - build-stage:
           requires:
             - test  
-#           filters:
-#            branches:
-#              only: feature/test 
+           filters:
+            branches:
+              only: develop
+      - build-prod:
+          requires:
+            - test  
+            filters:
+            branches:
+              only: master
