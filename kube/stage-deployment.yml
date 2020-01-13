@@ -22,4 +22,4 @@ spec:
             - containerPort: 3000
               name: http
       imagePullSecrets:
-        - name: stagekey
+        - name: stage
