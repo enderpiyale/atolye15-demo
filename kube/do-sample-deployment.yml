@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: do-kubernetes-sample-app
+  namespace: default
+  labels:
+    app: do-kubernetes-sample-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: do-kubernetes-sample-app
+  template:
+    metadata:
+      labels:
+        app: do-kubernetes-sample-app
+    spec:
+      containers:
+        - name: do-kubernetes-sample-app
+          image: enderpiyale/atolye15:latest
+          ports:
+            - containerPort: 3000
+              name: http
+      imagePullSecrets:
+        - name: myregistrykey
