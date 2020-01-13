@@ -65,12 +65,12 @@ workflows:
       - build-stage:
           requires:
             - test  
-           filters:
+          filters:
             branches:
               only: develop
       - build-prod:
           requires:
             - test  
-            filters:
+          filters:
             branches:
               only: master
