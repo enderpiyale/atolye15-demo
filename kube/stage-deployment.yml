@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: do-kubernetes-sample-app
-  namespace: default
+  namespace: stage
   labels:
     app: do-kubernetes-sample-app
 spec:
