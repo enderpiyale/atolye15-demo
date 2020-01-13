@@ -1,0 +1,21 @@
+kubectl create secret docker-registry myregistrykey \
+--docker-server=https://index.docker.io/v1/ \
+--docker-username=enderpiyale \
+--docker-password=End123456 \
+--docker-email=enderpiyale@gmail.com
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: atolye15test
+spec:
+  containers:
+    - name: atolye15
+      image: index.docker.io/enderpiyale/atolye15:latest
+      imagePullPolicy: Always
+      command: [ "echo", "SUCCESS" ]
+  imagePullSecrets:
+    - name: myregistrykey
+
+#kubectl create -f dummy.yml
