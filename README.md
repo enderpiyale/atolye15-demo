@@ -16,7 +16,7 @@ Tum bu kontroller pass olduktan sonra PR `develop` ile birlestigi zaman senin ya
 
 Image registry'e gittikten sonra latest tag'li bu image'in Kubernetes tarafinda senin yazdigin manifestolara uygun olarak `stage` namespace'inde yayina girmesini istiyoruz. Bu asamada ilgili kisiye mail gidebilir. Daha sonra Git tarafinda `develop`'tan `master`'a PR acildiginda tum surec tekrar yukaridaki gibi isleyip en sonunda `production` namespace'inde Kubernetes uzerinde yayinda olmasini bekliyoruz.
 
-Kubernetes tarafinda da kubden auto provision ile SSL ayarlarsan da super olur.
+Kubernetes tarafinda da kubkubectl get deployment -wden auto provision ile SSL ayarlarsan da super olur.
 
 Pipeline'in istedigin kismini es gecebilir veya kendince daha dogru oldugunu dusundugun bir hale getirebilirsin.
 
