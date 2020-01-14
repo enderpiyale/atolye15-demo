@@ -104,8 +104,8 @@ workflows:
             branches:
               only: develop
       - email-stage:
-          requires:
-            - build-stage
+#          requires:
+#            - build-stage
           filters:
             branches:
               only: develop
