@@ -22,4 +22,4 @@ spec:
             - containerPort: 3000
               name: http
       imagePullSecrets:
-        - name: cicd-stage-token-rpq4q
+        - name: stage
