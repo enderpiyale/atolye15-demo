@@ -114,8 +114,8 @@ workflows:
             branches:
               only: master
       - email-prod:
-        requires:
-          - build-prod
+          requires:
+            - build-prod
           filters:
             branches:
               only: master
