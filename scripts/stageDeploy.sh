@@ -8,5 +8,5 @@ set -e
   --kubeconfig=/dev/null \
   --server=$KUBERNETES_SERVER \
   --certificate-authority=stageCert.crt \
-  --token=$KUBERNETES_TOKEN \
+  --token=$CICD_STAGE_TOKEN \
   apply -f ./kube-stage

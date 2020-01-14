@@ -8,5 +8,5 @@ set -e
   --kubeconfig=/dev/null \
   --server=$KUBERNETES_SERVER \
   --certificate-authority=prodCert.crt \
-  --token=$KUBERNETES_TOKEN \
+  --token=$CICD_PROD_TOKEN \
   apply -f ./kube-prod
