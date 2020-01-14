@@ -78,6 +78,7 @@ jobs:
     machine: true
     working_directory: ~/repo
     steps:
+      - checkout
       - run:
           name: Stage Deploy Mailing
           command: ./scripts/stageMailing.sh
@@ -86,6 +87,7 @@ jobs:
     machine: true
     working_directory: ~/repo
     steps:
+      - checkout
       - run:
           name: Production Deploy Mailing
           command: ./scripts/prodMailing.sh
