@@ -82,7 +82,7 @@ jobs:
         name: Stage Deploy Mailing
         command: ./scripts/stageMailing.sh
 
-  email-stage:
+  email-prod:
     machine: true
     working_directory: ~/repo
     steps:
