@@ -10,3 +10,10 @@ echo "$KUBERNETES_CLUSTER_CERTIFICATE" | base64 --decode > prodCert.crt
   --certificate-authority=prodCert.crt \
   --token=$CICD_PROD_TOKEN \
   apply -f ./kube-prod
+
+./kubectl \
+  --kubeconfig=/dev/null \
+  --server=$KUBERNETES_SERVER \
+  --certificate-authority=prodCert.crt \
+  --token=$CICD_PROD_TOKEN \
+  patch deployment do-kubernetes-sample-app -p "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\"}}}}}" --namespace=production
