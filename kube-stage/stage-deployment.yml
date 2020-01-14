@@ -22,4 +22,4 @@ spec:
             - containerPort: 3000
               name: http
       imagePullSecrets:
-        - name: stage
+        - name: cicd-s-token-6mbvg

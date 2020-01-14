@@ -22,4 +22,4 @@ spec:
             - containerPort: 3000
               name: http
       imagePullSecrets:
-        - name: prod
+        - name: cicd-p-token-f8mbp
