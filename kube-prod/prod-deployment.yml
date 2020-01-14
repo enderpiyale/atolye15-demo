@@ -22,4 +22,4 @@ spec:
             - containerPort: 3000
               name: http
       imagePullSecrets:
-        - name: cicd-prod-token-nnxx6
+        - name: prod
